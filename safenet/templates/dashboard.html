@@ -1,0 +1,15 @@
+<div>
+    {% for l in log %}
+        <h1>Time: {{ l.time }}</h1>
+        <h1>Log: {{ l.log }}</h1>
+    {% endfor %}
+</div>
+
+<h1 id="time">Time: {{ time }}</h1>
+<h1 id="data">Data: {{ data }}</h1>
+
+<form method="POST" style="display: none;">
+    {{ form.data }}
+    {{ form.time  }}
+</form>
+
