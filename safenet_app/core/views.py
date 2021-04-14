@@ -1,5 +1,4 @@
 from flask import render_template, request, Blueprint, current_app, session
-from safenet_app import db
 import os
 
 core = Blueprint('core', __name__)

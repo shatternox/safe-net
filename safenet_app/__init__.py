@@ -50,8 +50,8 @@ app.config['SECRET_KEY'] = "asdadadasa;dksa;ldks;ald;lasdka"
 from safenet_app.core.views import core
 app.register_blueprint(core)
 
-# from safenet_app.dashboard.views import dashboard
-# app.register_blueprint(dashboard)
+from safenet_app.dashboard.views import dashboard
+app.register_blueprint(dashboard)
 
 from safenet_app.users.views import users
 app.register_blueprint(users)
