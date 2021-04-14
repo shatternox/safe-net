@@ -1,4 +1,4 @@
-from safenet import app
+from safenet_app import app
 
 if __name__ == "__main__":
     app.run(debug=True)

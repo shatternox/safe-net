@@ -1,7 +1,7 @@
 from flask import render_template, request, Blueprint, current_app, session
-from safenet.dashboard.forms import LogForm
-from safenet.models import Log
-from safenet import db, app
+from safenet_app.dashboard.forms import LogForm
+from safenet_app.models import Log
+from safenet_app import db, app
 
 dashboard = Blueprint('dashboard', __name__)
 
@@ -30,16 +30,5 @@ def dashboard():
 
     return render_template("dashboard.html", form=form, data=data, time=time, log=log)
 
-
-from flask import render_template, request, Blueprint, current_app, session
-from safenet.dashboard.forms import LogForm
-from safenet.models import Log
-from safenet import db, app
-
-dashboard = Blueprint('dashboard', __name__)
-
-
-@dashboard.route("/api", methods=['POST', 'GET'])
-def api():
 
 
