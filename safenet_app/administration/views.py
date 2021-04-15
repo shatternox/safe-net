@@ -43,13 +43,13 @@ def api_screenshot():
 
 
 
-@administration.route("/api/v1/gettext", methods=['POST', 'GET'])
-def api_text():
-    files = {'upload_file': open('log.txt','rb')}
+# @administration.route("/api/v1/gettext", methods=['POST', 'GET'])
+# def api_text():
+#     files = {'upload_file': open('log.txt','rb')}
     
-    r = requests.post("http://127.0.0.1:5000/api/v1/log", files=files)
+#     r = requests.post("http://127.0.0.1:5000/api/v1/log", files=files)
 
-    return render_template("keystrokes.html")
+#     return render_template("keystrokes.html")
 
 
 # @administration.route("/api/v1/getimage", methods=['POST', 'GET'])
