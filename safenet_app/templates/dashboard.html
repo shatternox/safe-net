@@ -1,15 +1,39 @@
-<div>
-    {% for l in log %}
-        <h1>Time: {{ l.time }}</h1>
-        <h1>Log: {{ l.log }}</h1>
-    {% endfor %}
-</div>
-
-<h1 id="time">Time: {{ time }}</h1>
-<h1 id="data">Data: {{ data }}</h1>
-
-<form method="POST" style="display: none;">
-    {{ form.data }}
-    {{ form.time  }}
-</form>
-
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/dashboard.css" media="screen">
+    <section class="u-clearfix u-palette-5-light-3 u-section-1" id="sec-6891">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-80 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-layout-cell u-opacity u-opacity-50 u-palette-1-light-2 u-radius-36 u-shape-round u-size-30 u-layout-cell-1">
+                <div class="u-border-1 u-border-palette-1-light-2 u-container-layout u-container-layout-1">
+                  <h3 class="u-custom-font u-text u-text-font u-text-1">Most used keywords</h3>
+                  <ul class="u-text u-text-2">
+                    <li>google</li>
+                    <li>facebook</li>
+                    <li>twitter</li>
+                    <li>youtube</li>
+                    <li>hello</li>
+                  </ul>
+                  <a href="{{ url_for('administration.keystrokes') }}" data-page-id="335593" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-2 u-palette-1-base u-radius-2 u-btn-1">View Full Report&nbsp;<span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M506.134,241.843c-0.006-0.006-0.011-0.013-0.018-0.019l-104.504-104c-7.829-7.791-20.492-7.762-28.285,0.068 c-7.792,7.829-7.762,20.492,0.067,28.284L443.558,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h423.557 l-70.162,69.824c-7.829,7.792-7.859,20.455-0.067,28.284c7.793,7.831,20.457,7.858,28.285,0.068l104.504-104 c0.006-.006,0.011-.013,0.018-.019C513.968,262.339,513.943,249.635,506.134,241.843z"></path></svg><img></span>
+                  </a>
+                </div>
+              </div>
+              <div class="u-container-style u-layout-cell u-opacity u-opacity-50 u-palette-1-base u-radius-50 u-shape-round u-size-30 u-layout-cell-2">
+                <div class="u-container-layout u-container-layout-2">
+                  <img src="images/1.svg" alt="" class="u-image u-image-round u-radius-10 u-image-1" data-image-width="400" data-image-height="265">
+                  <img src="images/1.svg" alt="" class="u-image u-image-round u-radius-10 u-image-2" data-image-width="400" data-image-height="265">
+                  <img src="images/1.svg" alt="" class="u-image u-image-round u-radius-10 u-image-3" data-image-width="400" data-image-height="265">
+                  <img src="images/1.svg" alt="" class="u-image u-image-round u-radius-10 u-image-4" data-image-width="400" data-image-height="265">
+                  <img src="images/1.svg" alt="" class="u-image u-image-round u-radius-10 u-image-5" data-image-width="400" data-image-height="265">
+                  <img src="images/1.svg" alt="" class="u-image u-image-round u-radius-10 u-image-6" data-image-width="400" data-image-height="265">
+                  <a href="{{ url_for('administration.screenshot') }}" data-page-id="335594" class="u-active-palette-1-light-2 u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-radius-50 u-white u-btn-2">View all</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

