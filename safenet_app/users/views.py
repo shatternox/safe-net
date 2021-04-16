@@ -28,11 +28,10 @@ def register():
         if form.validate_on_submit():
 
             user = auth.create_user_with_email_and_password(form.email.data, form.password.data)
+            auth.send_email_verification(user['idToken'])
 
             flash("An verification has been send to your email. Please verify to login!")
             return redirect(url_for('users.login'))
-        else:
-            print('masuk')
     
     return render_template('register.html', form=form, title='Register')
 
