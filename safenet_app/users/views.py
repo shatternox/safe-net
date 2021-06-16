@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, Blueprint, current_app, flash, url_for
+from flask import render_template, redirect, request, Blueprint, current_app, flash, url_for, session
 from flask_login import login_user, current_user, logout_user, login_required
 from safenet_app.users.forms import RegistrationForm, LoginForm
 from safenet_app import auth, db
@@ -9,9 +9,10 @@ users = Blueprint('users', __name__)
 
 @users.route("/logout")
 def logout():
-
+    session.clear()
     try:
         auth.signOut()
+        session.clear()
     except:
         flash("Something wrong happened. Please try again")
 
@@ -40,13 +41,20 @@ def register():
 def login():
 
     form = LoginForm()
+    try:
+        print(session['usr'])
+        return redirect(url_for('administration.dashboard'))
+    except KeyError:
+        current_user = session.get('usr');
+        if request.method == 'POST':
+            if form.validate_on_submit():
+                try:
+                    user = auth.sign_in_with_email_and_password(form.email.data, form.password.data)
+                    user = auth.refresh(user['refreshToken'])
+                    user_id = user['idToken']
+                    session['usr'] = user_id
+                    return redirect(url_for("administration.dashboard"))
+                except:
+                    message = "Login incorrect!"
 
-    if request.method == 'POST':
-
-        if form.validate_on_submit():
-
-            user = auth.sign_in_with_email_and_password(form.email.data, form.password.data)
-            
-            return redirect(url_for("administration.dashboard"))
-
-    return render_template('login.html', form=form, title='Login')
+    return render_template('login.html', form=form, title='Login', usr=current_user)
